@@ -38,14 +38,15 @@ function App() {
   console.log(inputs);
 
   return (
-    <div className="max-w-lg p-4 mx-auto bg-slate-200 mt-40 rounded-lg">
+    <main className="max-w-lg p-4 mx-auto bg-slate-200 mt-40 rounded-lg">
       <h1 className="text-3xl font-semibold text-center my-7">
         Delivery Fee Calculator
       </h1>
       <form className="flex flex-col gap-4" onSubmit={handleOnSubmit}>
         <InputField
+          id="cartValue"
           name="cartValue"
-          label="Cart Value (€)"
+          label="Cart Value (in Euros)"
           type="number"
           value={inputs.cartValue}
           testId="cartValue"
@@ -53,8 +54,9 @@ function App() {
           onChange={handleOnchange}
         />
         <InputField
+          id="deliveryDistance"
           name="deliveryDistance"
-          label="Delivery Distance (m)"
+          label="Delivery Distance (in meters)"
           type="number"
           value={inputs.deliveryDistance}
           testId="cartValue"
@@ -62,6 +64,7 @@ function App() {
           onChange={handleOnchange}
         />
         <InputField
+          id="numberOfItems"
           name="numberOfItems"
           label="Number of Items"
           type="number"
@@ -71,6 +74,7 @@ function App() {
           onChange={handleOnchange}
         />
         <InputField
+          id="orderTime"
           name="orderTime"
           label="Time"
           type="datetime-local"
@@ -85,7 +89,7 @@ function App() {
           Calculate delivery price
         </button>
       </form>
-    </div>
+    </main>
   );
 }
 

@@ -3,13 +3,17 @@ import type { ComponentPropsWithoutRef } from "react";
 interface InputFieldProps extends ComponentPropsWithoutRef<"input"> {
   label: string;
   testId: string;
+  id: string;
 }
 
-const InputField = ({ label, testId, ...rest }: InputFieldProps) => (
+const InputField = ({ label, testId, id, ...rest }: InputFieldProps) => (
   <>
-    <label className="text-xl">{label} </label>
+    <label htmlFor={id} className="text-xl">
+      {label}
+    </label>
     <input
       {...rest}
+      id={id}
       data-test-id={testId}
       className="  border rounded-lg w-full p-3  focus:outline-none"
     />
