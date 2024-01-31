@@ -15,7 +15,7 @@ const InputField = ({ label, testId, id, ...rest }: InputFieldProps) => (
       {...rest}
       id={id}
       data-test-id={testId}
-      className="  border rounded-lg w-full p-3  focus:outline-none"
+      className="border-r-4 border-4 rounded-lg w-full p-3  focus:outline-none"
     />
   </>
 );

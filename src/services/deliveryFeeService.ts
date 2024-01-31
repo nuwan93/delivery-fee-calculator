@@ -1,14 +1,16 @@
-const MAXIMUM_CART_VALUE_FOR_PANALTY = 10;
-
 const getSmallOrderSurcharge = (cartValue: number) => {
-  if (cartValue < MAXIMUM_CART_VALUE_FOR_PANALTY) {
-    return MAXIMUM_CART_VALUE_FOR_PANALTY - cartValue;
+  if (cartValue < 10) {
+    return Math.round((10 - cartValue) * 100) / 100;
   }
   return 0;
 };
 
-const getDeliveryDistanceFee = (deliveryDistance: number) =>
-  deliveryDistance > 1000 ? 2 + Math.ceil((deliveryDistance - 1000) / 500) : 2;
+const getDeliveryDistanceFee = (deliveryDistance: number) => {
+  if (deliveryDistance > 1000) {
+    return 2 + Math.ceil((deliveryDistance - 1000) / 500);
+  }
+  return 2;
+};
 
 const getExtraItemSurcharge = (numberOfItems: number) => {
   if (numberOfItems >= 5) {
@@ -26,10 +28,12 @@ const getBulkFee = (numberOfItems: number) => {
 
 const getRushHourFee = (orderTime: string) => {
   const orderDate = new Date(orderTime);
+
   if (
-    orderDate.getUTCDay() === 5 &&
-    orderDate.getUTCHours() >= 15 &&
-    orderDate.getUTCHours() < 19
+    (orderDate.getDay() === 5 &&
+      orderDate.getHours() >= 15 &&
+      orderDate.getHours() < 19) ||
+    (orderDate.getHours() === 19 && orderDate.getMinutes() === 0)
   ) {
     return 1.2;
   }

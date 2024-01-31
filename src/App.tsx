@@ -1,7 +1,7 @@
 import { useState } from "react";
 import InputField from "./components/InputField";
-import { getDeliveryFee } from "./services/delivery-fee-service";
-import { getCurrentTime } from "./utils/date-utils";
+import { getDeliveryFee } from "./services/deliveryFeeService";
+import { getCurrentTime } from "./utils/dateUtils";
 
 function App() {
   const [inputs, setInputs] = useState({
@@ -35,11 +35,9 @@ function App() {
     setDeliveryFee(fee);
   };
 
-  console.log(inputs);
-
   return (
-    <main className="max-w-lg p-4 mx-auto bg-slate-200 mt-40 rounded-lg">
-      <h1 className="text-3xl font-semibold text-center my-7">
+    <main className="max-w-lg p-5 mx-auto bg-white mt-40 rounded-lg">
+      <h1 className="text-3xl font-semibold text-center my-10">
         Delivery Fee Calculator
       </h1>
       <form className="flex flex-col gap-4" onSubmit={handleOnSubmit}>
@@ -83,7 +81,7 @@ function App() {
           onChange={handleOnchange}
         />
         <p className="p-3 text-xl text-center font-semibold">
-          Delivery price: {deliveryFee}€{" "}
+          Delivery price: {deliveryFee.toFixed(2)} €
         </p>
         <button className="bg-slate-700 p-3 text-white rounded-lg hover:opacity-95 disabled:opacity-80 text-xl">
           Calculate delivery price
