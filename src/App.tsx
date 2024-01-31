@@ -2,6 +2,8 @@ import { useState } from "react";
 import InputField from "./components/InputField";
 import { getDeliveryFee } from "./services/deliveryFeeService";
 import { getCurrentTime } from "./utils/dateUtils";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [inputs, setInputs] = useState({
@@ -24,20 +26,33 @@ function App() {
 
   const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setDeliveryFee(0);
 
-    const { cartValue, deliveryDistance, numberOfItems, orderTime } = inputs;
-    const fee = getDeliveryFee(
-      cartValue,
-      deliveryDistance,
-      numberOfItems,
-      orderTime
-    );
-    setDeliveryFee(fee);
+    if (inputs.cartValue <= 0) {
+      toast("❌ Cart value must be greater than 0");
+      return;
+    } else if (inputs.deliveryDistance <= 0) {
+      toast("❌ Delivery distance must be greater than 0");
+      return;
+    } else if (inputs.numberOfItems <= 0) {
+      toast("❌ Number of items must be greater than 0");
+      return;
+    } else {
+      const { cartValue, deliveryDistance, numberOfItems, orderTime } = inputs;
+      const fee = getDeliveryFee(
+        cartValue,
+        deliveryDistance,
+        numberOfItems,
+        orderTime
+      );
+      toast(`✅ Total delivery fee is ${fee} Euros`);
+      setDeliveryFee(fee);
+    }
   };
 
   return (
-    <main className="max-w-lg p-5 mx-auto bg-white mt-40 rounded-lg">
-      <h1 className="text-3xl font-semibold text-center my-10">
+    <main className="max-w-lg p-5 mx-auto my-auto bg-white mt-40 rounded-lg">
+      <h1 className="text-3xl font-semibold text-center my-5">
         Delivery Fee Calculator
       </h1>
       <form className="flex flex-col gap-4" onSubmit={handleOnSubmit}>
@@ -80,13 +95,14 @@ function App() {
           testId="cartValue"
           onChange={handleOnchange}
         />
-        <p className="p-3 text-xl text-center font-semibold">
+        <p className="p-3 text-2xl text-center font-semibold">
           Delivery price: {deliveryFee.toFixed(2)} €
         </p>
-        <button className="bg-slate-700 p-3 text-white rounded-lg hover:opacity-95 disabled:opacity-80 text-xl">
+        <button className="bg-slate-700 p-3 text-white rounded-lg hover:opacity-95  text-xl ">
           Calculate delivery price
         </button>
       </form>
+      <ToastContainer position="top-center" />
     </main>
   );
 }
