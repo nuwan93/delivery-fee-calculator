@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a frontend application developed using React, Vite, and TypeScript. It serves as a solution for the assignment provided by wolt. The application implements various features as per the assignment requirements and is hosted on Vercel [https://delivery-fee-calculator-ruby.vercel.app/](#).
+This project is a frontend application developed using React, Vite, and TypeScript. It serves as a solution for the assignment provided by wolt. The application implements various features as per the assignment requirements and is hosted on Vercel https://delivery-fee-calculator-ruby.vercel.app/.
 
 ## Technologies Used
 
@@ -22,4 +22,4 @@ This project is a frontend application developed using React, Vite, and TypeScri
 
 ## Live Demo
 
-A live demo of the application is hosted at [https://delivery-fee-calculator-ruby.vercel.app/](#).
+A live demo of the application is hosted at https://delivery-fee-calculator-ruby.vercel.app/.
