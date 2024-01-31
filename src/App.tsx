@@ -72,7 +72,7 @@ function App() {
           label="Delivery Distance (in meters)"
           type="number"
           value={inputs.deliveryDistance}
-          testId="cartValue"
+          testId="deliveryDistance"
           onFocus={handleOnFocus}
           onChange={handleOnchange}
         />
@@ -82,7 +82,7 @@ function App() {
           label="Number of Items"
           type="number"
           value={inputs.numberOfItems}
-          testId="cartValue"
+          testId="numberOfItems"
           onFocus={handleOnFocus}
           onChange={handleOnchange}
         />
@@ -92,10 +92,13 @@ function App() {
           label="Time"
           type="datetime-local"
           value={inputs.orderTime}
-          testId="cartValue"
+          testId="orderTime"
           onChange={handleOnchange}
         />
-        <p className="p-3 text-2xl text-center font-semibold">
+        <p
+          className="p-3 text-2xl text-center font-semibold"
+          data-test-id="fee"
+        >
           Delivery price: {deliveryFee.toFixed(2)} €
         </p>
         <button className="bg-slate-700 p-3 text-white rounded-lg hover:opacity-95  text-xl ">
