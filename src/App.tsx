@@ -5,7 +5,7 @@ import { getCurrentTime } from "./utils/dateUtils";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function App() {
+const App = () => {
   const [inputs, setInputs] = useState({
     cartValue: 0,
     deliveryDistance: 0,
@@ -108,6 +108,6 @@ function App() {
       <ToastContainer position="top-center" />
     </main>
   );
-}
+};
 
 export default App;
