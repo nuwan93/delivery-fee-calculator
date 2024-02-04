@@ -9,6 +9,8 @@ This project is a frontend application developed using React, Vite, and TypeScri
 - React
 - Vite
 - TypeScript
+- React testing library
+- Vitest
 
 ## Getting Started
 
