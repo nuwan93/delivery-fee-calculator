@@ -1,41 +1,41 @@
 import { isRushHour } from "../utils/dateUtils";
 
-export const getSmallOrderSurcharge = (cartValue: number) => {
+export const getSmallOrderSurcharge = (cartValue: number): number => {
   if (cartValue < 10) {
     return Math.round((10 - cartValue) * 100) / 100;
   }
   return 0;
 };
 
-export const getDeliveryDistanceFee = (deliveryDistance: number) => {
+export const getDeliveryDistanceFee = (deliveryDistance: number): number => {
   if (deliveryDistance > 1000) {
     return 2 + Math.ceil((deliveryDistance - 1000) / 500);
   }
   return 2;
 };
 
-export const getExtraItemSurcharge = (numberOfItems: number) => {
+export const getExtraItemSurcharge = (numberOfItems: number): number => {
   if (numberOfItems >= 5) {
     return 0.5 * (numberOfItems - 4);
   }
   return 0;
 };
 
-export const getBulkFee = (numberOfItems: number) => {
+export const getBulkFee = (numberOfItems: number): number => {
   if (numberOfItems > 12) {
     return 1.2;
   }
   return 0;
 };
 
-export const getRushHourFee = (orderTime: string) => {
+export const getRushHourFee = (orderTime: string): number => {
   if (isRushHour(orderTime)) {
     return 1.2;
   }
   return 0;
 };
 
-export const getIsDeliveryFeeNotAdded = (cartValue: number) => {
+export const getIsDeliveryFeeNotAdded = (cartValue: number): boolean => {
   return cartValue >= 200;
 };
 
@@ -44,7 +44,7 @@ export const getDeliveryFee = (
   deliveryDistance: number,
   numberOfItems: number,
   orderTime: string
-) => {
+): number => {
   const isDeliveryFeeNotAdded = getIsDeliveryFeeNotAdded(cartValue);
   if (isDeliveryFeeNotAdded) {
     return 0;
